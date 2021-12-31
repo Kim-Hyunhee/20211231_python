@@ -4,9 +4,7 @@
 # DB 연결 / 쿼리 / 결과 분석 표시 등등
 # 데이터베이스와 관련된 파이썬 코드
 from pymysql import connect
-from pymysql.cursors import DictCursor
-from models.posts import Posts
-from models.users import Users  # DB SELECT 결과를 dict 형태로 가져오게 해주는 클래스
+from pymysql.cursors import DictCursor # DB SELECT 결과를 dict 형태로 가져오게 해주는 클래스
 
 # connect 함수를 직접 import => pymysql  코드 생략
 db = connect (
@@ -26,7 +24,7 @@ cursor = db.cursor()
 # 필요 기능들을 함수로 작성
 
 def get_user_list():
-    sql = f"SELECT * FROM users"
+    sql = f"SELECT * FROM users "
     cursor.execute(sql)
     
     result = cursor.fetchall()
@@ -54,3 +52,11 @@ def get_posts(page):
     result = cursor.fetchall()
     
     return result 
+
+# DB에 모든 회원의 수를 물어보는 함수 추가
+def get_all_user_count():   # 결과 자체를 숫자로 리턴해주자
+    sql = f"SELECT COUNT(*) AS user_count FROM users"
+    
+    cursor.execute(sql)
+    result = cursor.fetchone()  # 목록이 아니라 최초의 한 줄만 가져오자
+    return result['user_count']
