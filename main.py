@@ -27,13 +27,13 @@ def show_main_menu ():
     
 # 1번 누르면 => DB에서 수강생 목록 조회를 요청하는 기능
 def get_user_list_from_db():
-    result = get_user_list()  # DB 전담 클래스가 보내준 결과 (dict 여러개 -> tuple)=> UI에서 활용
+    result = get_user_list()  # DB 전담 클래스가 보내준 결과 (dict 여러개 -> tuple)=> UI에서 활용  ????? 리스트로 바꾸는 거 아닌감
     
     # for문으로 돌아보면서 => 문구 가공 / 출력
     for row in result:
         # print(row)  # row 한 줄 : 하나의 dict로 표현됨
         user = Users(row)
-        print(user.name)  # dict -> Users 객체로 변환 되었는지 확인
+        user.get_simple_info()  # user에 만들어진 메쏘드 활용
         
 # python 명령어로 실행될 때 => 위에서부터 밑으로 한 줄씩 순서대로 실행됨
 # 함수도 만들어 두고 나서 사용해야함
