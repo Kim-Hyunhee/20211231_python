@@ -60,3 +60,4 @@ def get_all_user_count():   # 결과 자체를 숫자로 리턴해주자
     cursor.execute(sql)
     result = cursor.fetchone()  # 목록이 아니라 최초의 한 줄만 가져오자
     return result['user_count']
+
