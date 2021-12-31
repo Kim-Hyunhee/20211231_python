@@ -27,7 +27,7 @@ def show_main_menu ():
     
 # 1번 누르면 => DB에서 수강생 목록 조회를 요청하는 기능
 def get_user_list_from_db():
-    result = get_user_list()  # DB 전담 클래스가 보내준 결과 (dict 여러개 -> tuple)=> UI에서 활용  ????? 리스트로 바꾸는 거 아닌감
+    result = get_user_list()  # DB 전담 클래스가 보내준 결과 (dict 여러개 -> tuple)=> UI에서 활용  
     
     # for문으로 돌아보면서 => 문구 가공 / 출력
     for row in result:
