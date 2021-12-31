@@ -4,7 +4,9 @@
 # DB 연결 / 쿼리 / 결과 분석 표시 등등
 # 데이터베이스와 관련된 파이썬 코드
 from pymysql import connect
-from pymysql.cursors import DictCursor  # DB SELECT 결과를 dict 형태로 가져오게 해주는 클래스
+from pymysql.cursors import DictCursor
+from models.posts import Posts
+from models.users import Users  # DB SELECT 결과를 dict 형태로 가져오게 해주는 클래스
 
 # connect 함수를 직접 import => pymysql  코드 생략
 db = connect (
@@ -46,7 +48,7 @@ def get_posts(page):
     # 몇 페이지냐에 따른 -> 건너뛸 갯수는 몇 개? 쿼리 작성 가능
     offset = (page -1) * 5
     
-    sql = f"SELECT * FROM posts AS p ORDER BY p.created_at DESC LIMIT {offset}, 5"
+    sql = f"SELECT p.*, u.name AS writer_name FROM posts AS p JOIN users AS u ON u.id = p.user_id ORDER BY p.created_at DESC LIMIT {offset}, 5"
     
     cursor.execute(sql)
     result = cursor.fetchall()
