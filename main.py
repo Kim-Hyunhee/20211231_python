@@ -33,6 +33,7 @@ def get_user_list_from_db():
     for row in result:
         # print(row)  # row 한 줄 : 하나의 dict로 표현됨
         user = Users(row)
+        print(user.name)  # dict -> Users 객체로 변환 되었는지 확인
         
 # python 명령어로 실행될 때 => 위에서부터 밑으로 한 줄씩 순서대로 실행됨
 # 함수도 만들어 두고 나서 사용해야함
