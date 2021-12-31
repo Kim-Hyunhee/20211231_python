@@ -51,4 +51,4 @@ def get_posts(page):
     cursor.execute(sql)
     result = cursor.fetchall()
     
-    return result
+    print( result )
